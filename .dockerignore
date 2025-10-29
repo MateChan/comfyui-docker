@@ -1,0 +1,20 @@
+# Data directories mounted as volumes
+custom_nodes/
+input/
+models/
+output/
+user/
+
+# VCS
+.git/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Build artifacts
+*.egg
+*.egg-info/
+*.so
+build/
+dist/

@@ -1,0 +1,36 @@
+# Python caches
+*.py[cod]
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Tooling
+.python-version
+
+# Editors
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# macOS
+.AppleDouble
+.DS_Store
+**/.DS_Store
+
+# Environment files
+.env
+
+# Data directories
+custom_nodes/
+input/
+models/
+output/
+user/
