@@ -6,12 +6,17 @@
 docker compose up -d --build
 ```
 
+or
+
+```bash
+PUID=$(id -u) PGID=$(id -g) docker compose up -d --build
+```
+
 - UI at <http://localhost:8188>
 
 ## Folders
 
-- Read-only: `custom_nodes/`, `models/`
-- Writable: `input/`, `output/`, `user/`
+- `custom_nodes/`, `models/`, `input/`, `output/`, `user/`
 
 ## Reset
 
