@@ -2,7 +2,6 @@ FROM nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
-ENV PATH="/root/.local/bin:$PATH"
 
 RUN apt-get update && apt-get install -y \
   python3.10 \
@@ -13,10 +12,15 @@ RUN apt-get update && apt-get install -y \
   libgl1 \
   libglib2.0-0 \
   libgomp1 \
+  gosu \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+ENV PATH="/root/.local/bin:$PATH"
+
+RUN groupadd -g 1000 comfyui && \
+  useradd -u 1000 -g comfyui -m -s /bin/bash comfyui
 
 WORKDIR /app
 
@@ -45,6 +49,8 @@ RUN mkdir -p /app/models/checkpoints \
   /app/output \
   /app/user \
   /app/custom_nodes
+
+RUN chown -R comfyui:comfyui /app
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
